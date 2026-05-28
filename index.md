@@ -1,60 +1,90 @@
-# Teleoperation of Unmanned Ground Vehicles Using Human Foot-Based Interface
-
-## Rudolf Krecht, Miklós Unger, Balázs Szőnyi, Bálint Varga
-
-[View on GitHub](https://github.com/rudolfkrecht/foot_teleoperation_ugv)
-
+---
+layout: default
+title: "Teleoperation of Unmanned Ground Vehicles Using Human Foot-Based Interface"
 ---
 
 ## Abstract
 
-This paper presents a wearable foot-based teleoperation interface for a small-scale unmanned ground vehicle. The proposed interface uses a Bluetooth Low Energy inertial sensor attached to the operator's foot and converts foot orientation into Ackermann steering and speed commands in a ROS 2-based vehicle control architecture.
-
-The method is evaluated on a RoboRacer-type indoor test vehicle and compared with conventional manual joystick teleoperation. Experimental results show that the foot controller enabled continuous vehicle operation over the complete test run, with a more conservative speed profile than manual control. The manual joystick produced a higher average speed and longer travelled distance, while the foot interface resulted in lower maximum yaw rate and a narrower speed distribution.
-
-The results indicate that foot-based teleoperation is feasible for ground vehicle control, but further tuning of longitudinal command generation and steering sensitivity is required to improve driving efficiency and reduce operator workload.
+<div style="text-align: justify;">
+This paper presents a wearable foot-based teleoperation interface for a small-scale unmanned ground vehicle. The proposed interface uses a Bluetooth Low Energy inertial sensor attached to the operator's foot and converts foot orientation into Ackermann steering and speed commands in a ROS 2-based vehicle control architecture. The method is evaluated on a RoboRacer-type indoor test vehicle and compared with conventional manual joystick teleoperation. Experimental results show that the foot controller enabled continuous vehicle operation over the complete test run, with a more conservative speed profile than manual control. The manual joystick produced a higher average speed and longer travelled distance, while the foot interface resulted in lower maximum yaw rate and a narrower speed distribution. The results indicate that foot-based teleoperation is feasible for ground vehicle control, but further tuning of longitudinal command generation and steering sensitivity is required to improve driving efficiency and reduce operator workload.
+</div>
 
 ---
 
+## Links
 
-## System Architecture
-
-
-## Foot-Based Teleoperation Method
-
-The control pipeline consists of the following steps:
-
-1. Connect to the BLE inertial sensor.
-2. Decode roll and pitch orientation values.
-3. Store the initial foot pose as the neutral position.
-4. Subtract the neutral offset from incoming measurements.
-5. Map corrected foot angles to steering and speed commands.
-6. Apply saturation, deadzone, and low-pass filtering.
-7. Publish Ackermann drive commands to the `/teleop` topic.
-8. Stop the vehicle if BLE packets are lost.
+- 📄 **Paper**: coming soon
+- 💻 **Code**: coming soon
+- 📊 **Rosbags / Data**: [Assets/Data](Assets/Data)
 
 ---
 
-## Experimental Setup
+## Method
 
-![Wearable devices](figures/devices.jpg)
+<div style="text-align: justify;">
+The proposed system uses a foot-mounted BLE inertial sensor as a wearable teleoperation interface. The measured foot orientation is decoded on the operator-side computer, calibrated around a neutral pose, passed through a deadzone and low-pass filter, and converted into Ackermann speed and steering commands. The generated commands are published to the RoboRacer control stack through the same teleoperation input topic used by the reference manual controller.
+</div>
 
-The experiment compared two input methods:
+<br>
 
-- Foot-based teleoperation using the BLE inertial sensor
-- Manual teleoperation using a conventional joystick
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; text-align:center;">
+  <div style="width:80%; max-width:800px;">
+    <img src="Assets/Figures/system.png" style="width:100%;"><br>
+    <em>System architecture of the proposed foot-based teleoperation interface.</em>
+  </div>
+</div>
 
-Both methods controlled the same RoboRacer vehicle through the same ROS 2 control stack.
+<br>
 
-![Indoor test track](figures/indoortrack.jpg)
 
-The measurements were carried out on an indoor track with straight and curved sections. ROS 2 bags were recorded during both runs and analysed offline.
+---
+
+## Test Run
+
+<div style="text-align: justify;">
+The following recordings show the RoboRacer vehicle's steering and throttle functionalities with the proposed foot-based teleoperation interface.
+</div>
+
+<br>
+
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:20px; flex-wrap:wrap; text-align:center;">
+
+  <div style="width:30%; min-width:250px;">
+    <img src="Assets/Figures/steering.gif" style="width:100%;"><br>
+    <em>Example test run using the foot-based teleoperation interface.</em>
+  </div>
+
+  <div style="width:30%; min-width:250px;">
+    <img src="Assets/Figures/throttle.gif" style="width:100%;"><br>
+    <em>Steering functionality test using foot-based commands.</em>
+  </div>
+
+  <div style="width:30%; min-width:250px;">
+    <img src="Assets/Figures/combined.gif" style="width:100%;"><br>
+    <em>Throttle functionality test using foot-based commands.</em>
+  </div>
+
+</div>
+
+<!-- If you prefer MP4 instead of GIF, use this block and remove the GIF block above:
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; text-align:center;">
+  <video autoplay loop muted playsinline controls style="width:80%; max-width:800px;" src="Assets/Figures/foot_test_run.mp4"></video>
+</div>
+
+-->
 
 ---
 
 ## Results
 
-The recorded runs were trimmed to equal length before comparison. The evaluation interval was approximately 216 seconds for both control methods.
+<div style="text-align: justify;">
+The recorded runs were trimmed to equal length before comparison. The evaluation interval was approximately 216 seconds for both control methods. The foot controller completed the full run and generated continuous vehicle commands throughout the experiment. Compared with manual joystick control, it produced a more conservative speed profile and lower peak yaw-rate values.
+</div>
+
+<br>
+
+<div align="center">
 
 | Metric | Foot control | Manual control |
 |---|---:|---:|
@@ -65,74 +95,44 @@ The recorded runs were trimmed to equal length before comparison. The evaluation
 | Mean absolute yaw rate [rad/s] | 0.459 | 0.485 |
 | Maximum absolute yaw rate [rad/s] | 0.795 | 1.181 |
 
----
+</div>
 
-## Speed Comparison
 
-![Speed comparison](figures/03_speed_equal_length.png)
+<br>
 
-The foot controller produced a nearly constant and conservative speed profile, while the manual joystick allowed higher vehicle speeds.
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:20px; flex-wrap:wrap; text-align:center;">
+  <div style="width:45%; max-width:500px;">
+    <img src="Assets/Figures/03_speed_equal_length.png" style="width:100%;"><br>
+    <em>Odometry speed comparison over equal-length runs.</em>
+  </div>
+  <div style="width:45%; max-width:500px;">
+    <img src="Assets/Figures/04_yaw_rate_equal_length.png" style="width:100%;"><br>
+    <em>Yaw-rate comparison over equal-length runs.</em>
+  </div>
+</div>
 
----
+<br>
 
-## Yaw-Rate Comparison
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:20px; flex-wrap:wrap; text-align:center;">
+  <div style="width:45%; max-width:500px;">
+    <img src="Assets/Figures/05_integrated_distance_equal_length.png" style="width:100%;"><br>
+    <em>Integrated distance calculated from odometry speed.</em>
+  </div>
+  <div style="width:45%; max-width:500px;">
+    <img src="Assets/Figures/06_speed_distribution_equal_length.png" style="width:100%;"><br>
+    <em>Speed distribution over equal-length runs.</em>
+  </div>
+</div>
 
-![Yaw-rate comparison](figures/04_yaw_rate_equal_length.png)
+<br>
 
-The manual joystick produced higher peak yaw-rate values, indicating more aggressive turning manoeuvres. The foot controller showed lower peak turning activity.
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap; text-align:center;">
+  <div style="width:70%; max-width:750px;">
+    <img src="Assets/Figures/07_speed_vs_turning_equal_length.png" style="width:100%;"><br>
+    <em>Speed versus absolute yaw rate for foot-based and manual control.</em>
+  </div>
+</div>
 
----
 
-## Integrated Distance
-
-![Integrated distance](figures/05_integrated_distance_equal_length.png)
-
-The manual joystick covered a longer distance during the same time interval, mainly due to its higher average speed.
-
----
-
-## Speed Distribution
-
-![Speed distribution](figures/06_speed_distribution_equal_length.png)
-
-The foot controller concentrated most speed samples in a narrow range, while the manual joystick produced a wider speed distribution.
-
----
-
-## Speed Versus Turning Intensity
-
-![Speed versus yaw rate](figures/07_speed_vs_turning_equal_length.png)
-
-The manual joystick contains samples at both higher speed and higher yaw rate. The foot controller remains in a more conservative operating region.
-
----
-
-## Commanded Speed
-
-![Commanded speed](figures/08_commanded_speed_equal_length.png)
-
-The implemented foot controller mostly generated a constant forward speed command, which explains the narrow speed distribution observed in the odometry data.
-
----
-
-## Commanded Steering
-
-![Commanded steering](figures/09_commanded_steering_equal_length.png)
-
-The steering command shows frequent changes and repeated operation near the configured steering limits.
-
----
-
-## Commanded Steering Distribution
-
-![Commanded steering distribution](figures/10_commanded_steering_distribution.png)
-
-The steering distribution indicates that further calibration and tuning of the foot-control mapping is required.
-
----
-
-## Conclusion
-
-The experiment demonstrates that a BLE inertial-sensor-based foot interface can be used for continuous teleoperation of a small unmanned ground vehicle. Compared with manual joystick control, the current foot controller resulted in slower but more conservative driving. The results support the feasibility of foot-based teleoperation, while also highlighting the need for improved throttle mapping, steering calibration, and user evaluation in future work.
 
 ---
