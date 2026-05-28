@@ -79,21 +79,62 @@ The following recordings show the RoboRacer vehicle's steering and throttle func
 ## Results
 
 <div style="text-align: justify;">
+
+</div>
+
+<br>
+
+## Results
+
+<div style="text-align: justify;">
 The recorded runs were trimmed to equal length before comparison. The evaluation interval was approximately 216 seconds for both control methods. The foot controller completed the full run and generated continuous vehicle commands throughout the experiment. Compared with manual joystick control, it produced a more conservative speed profile and lower peak yaw-rate values.
 </div>
 
 <br>
 
-<div align="center">
+<div style="display:flex; justify-content:center; width:100%;">
 
-| Metric | Foot control | Manual control |
-|---|---:|---:|
-| Duration [s] | 215.93 | 215.96 |
-| Integrated distance [m] | 143.37 | 186.02 |
-| Mean speed [m/s] | 0.664 | 0.861 |
-| Maximum speed [m/s] | 0.698 | 0.996 |
-| Mean absolute yaw rate [rad/s] | 0.459 | 0.485 |
-| Maximum absolute yaw rate [rad/s] | 0.795 | 1.181 |
+<table style="border-collapse: collapse; text-align: center;">
+  <thead>
+    <tr>
+      <th style="padding: 6px 12px;">Metric</th>
+      <th style="padding: 6px 12px;">Foot control</th>
+      <th style="padding: 6px 12px;">Manual control</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Duration [s]</td>
+      <td style="padding: 6px 12px;">215.93</td>
+      <td style="padding: 6px 12px;">215.96</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Integrated distance [m]</td>
+      <td style="padding: 6px 12px;">143.37</td>
+      <td style="padding: 6px 12px;">186.02</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Mean speed [m/s]</td>
+      <td style="padding: 6px 12px;">0.664</td>
+      <td style="padding: 6px 12px;">0.861</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Maximum speed [m/s]</td>
+      <td style="padding: 6px 12px;">0.698</td>
+      <td style="padding: 6px 12px;">0.996</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Mean absolute yaw rate [rad/s]</td>
+      <td style="padding: 6px 12px;">0.459</td>
+      <td style="padding: 6px 12px;">0.485</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 12px; text-align:left;">Maximum absolute yaw rate [rad/s]</td>
+      <td style="padding: 6px 12px;">0.795</td>
+      <td style="padding: 6px 12px;">1.181</td>
+    </tr>
+  </tbody>
+</table>
 
 </div>
 
