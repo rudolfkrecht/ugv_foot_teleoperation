@@ -51,17 +51,17 @@ The following recordings show the RoboRacer vehicle's steering and throttle func
 
   <div style="width:30%; min-width:250px;">
     <img src="Assets/Figures/steering.gif" style="width:100%;"><br>
-    <em>Example test run using the foot-based teleoperation interface.</em>
-  </div>
-
-  <div style="width:30%; min-width:250px;">
-    <img src="Assets/Figures/throttle.gif" style="width:100%;"><br>
     <em>Steering functionality test using foot-based commands.</em>
   </div>
 
   <div style="width:30%; min-width:250px;">
-    <img src="Assets/Figures/combined.gif" style="width:100%;"><br>
+    <img src="Assets/Figures/throttle.gif" style="width:100%;"><br>
     <em>Throttle functionality test using foot-based commands.</em>
+  </div>
+
+  <div style="width:30%; min-width:250px;">
+    <img src="Assets/Figures/combined.gif" style="width:100%;"><br>
+    <em>Combined functionality test using foot-based commands.</em>
   </div>
 
 </div>
