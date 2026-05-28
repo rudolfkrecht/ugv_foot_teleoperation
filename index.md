@@ -78,18 +78,6 @@ The following recordings show the RoboRacer vehicle's steering and throttle func
 
 ## Results
 
-<div style="text-align: justify;">
-
-</div>
-
-<br>
-
-## Results
-
-<div style="text-align: justify;">
-The recorded runs were trimmed to equal length before comparison. The evaluation interval was approximately 216 seconds for both control methods. The foot controller completed the full run and generated continuous vehicle commands throughout the experiment. Compared with manual joystick control, it produced a more conservative speed profile and lower peak yaw-rate values.
-</div>
-
 <br>
 
 <div style="display:flex; justify-content:center; width:100%;">
